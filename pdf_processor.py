@@ -33,8 +33,8 @@ class PDFProcessor:
         Returns a fitz.Document object of that single page.
         """
         try:
-            # 1. Get high-res image
-            pix = page.get_pixmap(dpi=300)
+            # 1. Get high-res image (reduced to 150 for Render memory limits)
+            pix = page.get_pixmap(dpi=150)
             img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
             
             # 2. Enhance if requested
@@ -116,7 +116,7 @@ class PDFProcessor:
         if len(text_content.strip()) < 50:
             logger.info("  Low text content detected. Running OCR with layout analysis...")
             try:
-                pix = page.get_pixmap(dpi=300)
+                pix = page.get_pixmap(dpi=150)
                 ocr_height = pix.height
                 img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
                 
