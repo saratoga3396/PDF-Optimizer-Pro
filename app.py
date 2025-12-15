@@ -7,8 +7,8 @@ from utils import is_generic_filename, sanitize_filename
 import time
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['PROCESSED_FOLDER'] = 'processed_web'
+app.config['UPLOAD_FOLDER'] = '/tmp/uploads'
+app.config['PROCESSED_FOLDER'] = '/tmp/processed_web'
 app.secret_key = 'supersecretkey'
 
 # Ensure directories exist
