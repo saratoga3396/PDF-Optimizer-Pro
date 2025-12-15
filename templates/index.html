@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Optimizer Pro</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;700&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="background-shape shape-1"></div>
+    <div class="background-shape shape-2"></div>
+
+    <div class="glass-container">
+        <header>
+            <h1>PDF Optimizer Pro</h1>
+            <p>Drag & Drop to Organize, Rotate, and Rename.</p>
+        </header>
+
+        <main>
+            <div class="options-container" style="margin-bottom: 20px; text-align: left; color: white;">
+                <div style="margin-bottom: 10px;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" id="make-searchable" style="width: 18px; height: 18px;" checked>
+                        <span>AI用テキスト埋め込み (透明テキスト)</span>
+                    </label>
+                </div>
+                <div>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="checkbox" id="enhance-image" style="width: 18px; height: 18px;" checked>
+                        <span>画質自動補正 (OCR精度向上) - 低速</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="drop-zone" class="drop-zone">
+                <div class="icon-container">
+                    <!-- SVG Icon for Upload -->
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 16L12 8" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M9 11L12 8 15 11" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M8 16H16" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#ffffff" stroke-width="2" />
+                    </svg>
+                </div>
+                <p>ここにPDFをドロップ<br>またはクリックして選択</p>
+                <input type="file" id="file-input" accept="application/pdf" hidden>
+            </div>
+
+            <div id="status-container" class="status-container hidden">
+                <div class="loader"></div>
+                <p id="status-text">Processing...</p>
+            </div>
+
+            <div id="result-container" class="result-container hidden">
+                <div class="success-icon">✓</div>
+                <h3>完了しました!</h3>
+                <p class="filename-display">New: <span id="new-filename">filename.pdf</span></p>
+                <a id="download-btn" href="#" class="btn-primary">ダウンロード</a>
+                <button id="reset-btn" class="btn-secondary">続けて処理する</button>
+            </div>
+        </main>
+
+        <footer>
+            <small>© 2024 PDF Convenience Tool</small>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
